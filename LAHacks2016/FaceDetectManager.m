@@ -32,23 +32,6 @@
             }
         }
     }];
-    
-//    [client detectWithUrl:@"http://assets.rollingstone.com/assets/images/story/taylor-swift-cancels-thailand-concert-due-to-political-turbulence-20140527/20140527-taylorswift-x624-1401220626.jpg" returnFaceId:YES returnFaceLandmarks:YES returnFaceAttributes:@[@(MPOFaceAttributeTypeAge), @(MPOFaceAttributeTypeFacialHair), @(MPOFaceAttributeTypeHeadPose), @(MPOFaceAttributeTypeSmile), @(MPOFaceAttributeTypeGender)] completionBlock:^(NSArray<MPOFace *> *collection, NSError *error) {
-//        
-//        if (error) {
-//            NSLog(@"Error: %@", error);
-//        }
-//        else {
-//            NSLog(@"Facial Attributes");
-//            for (MPOFace *face in collection) {
-//                NSLog(@"%@", face.faceId);
-//                NSLog(@"%@", face.attributes.gender);
-//                NSLog(@"%@", face.attributes.age.stringValue);
-//                
-//                [self getSimilarityBetweenFace1:face.faceId andFace2:@"36cb342f-f56a-455e-9589-0d8de98d2a67"];
-//            }
-//        }
-//    }];
 }
 
 + (void)getSimilarityBetweenFace1:(NSString *)faceID1 andFace2:(NSString *)faceID2 {

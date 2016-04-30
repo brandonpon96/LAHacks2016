@@ -16,6 +16,9 @@
 		CA8C40F31CD4A52F00E457B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C40F11CD4A52F00E457B9 /* LaunchScreen.storyboard */; };
 		CA8C40FE1CD4A52F00E457B9 /* LAHacks2016Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8C40FD1CD4A52F00E457B9 /* LAHacks2016Tests.m */; };
 		CA8C41091CD4A52F00E457B9 /* LAHacks2016UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8C41081CD4A52F00E457B9 /* LAHacks2016UITests.m */; };
+		FB34438E1CD549300058B781 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB34438D1CD549300058B781 /* CameraViewController.m */; };
+		FB3443911CD54AB70058B781 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3443901CD54AB70058B781 /* ImageViewController.m */; };
+		FB3443BB1CD54EEB0058B781 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3443BA1CD54EEB0058B781 /* AVFoundation.framework */; };
 		FB871C1F1CD4A97E00562B6C /* FaceDetectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,11 @@
 		CA8C410A1CD4A52F00E457B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F34B2246672B71731CFA1242 /* Pods-LAHacks2016.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAHacks2016.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAHacks2016/Pods-LAHacks2016.release.xcconfig"; sourceTree = "<group>"; };
 		FB104FE795B0389A5B1FCAC9 /* Pods-LAHacks2016.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAHacks2016.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAHacks2016/Pods-LAHacks2016.debug.xcconfig"; sourceTree = "<group>"; };
+		FB34438C1CD549300058B781 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		FB34438D1CD549300058B781 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		FB34438F1CD54AB70058B781 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		FB3443901CD54AB70058B781 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		FB3443BA1CD54EEB0058B781 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FB871C1D1CD4A97E00562B6C /* FaceDetectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetectManager.h; sourceTree = "<group>"; };
 		FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceDetectManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -65,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB3443BB1CD54EEB0058B781 /* AVFoundation.framework in Frameworks */,
 				5E6BD60212912FCAB9B22A8F /* libPods-LAHacks2016.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +107,7 @@
 		A1436E629F21400501615F2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB3443BA1CD54EEB0058B781 /* AVFoundation.framework */,
 				848EB64E8EF136630AC34B23 /* libPods-LAHacks2016.a */,
 			);
 			name = Frameworks;
@@ -134,6 +144,10 @@
 				CA8C40EA1CD4A52F00E457B9 /* ViewController.m */,
 				FB871C1D1CD4A97E00562B6C /* FaceDetectManager.h */,
 				FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */,
+				FB34438C1CD549300058B781 /* CameraViewController.h */,
+				FB34438D1CD549300058B781 /* CameraViewController.m */,
+				FB34438F1CD54AB70058B781 /* ImageViewController.h */,
+				FB3443901CD54AB70058B781 /* ImageViewController.m */,
 				CA8C40EC1CD4A52F00E457B9 /* Main.storyboard */,
 				CA8C40EF1CD4A52F00E457B9 /* Assets.xcassets */,
 				CA8C40F11CD4A52F00E457B9 /* LaunchScreen.storyboard */,
@@ -238,7 +252,7 @@
 				TargetAttributes = {
 					CA8C40DF1CD4A52F00E457B9 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = T8EE564ATL;
+						DevelopmentTeam = WQ6P5JSBTN;
 					};
 					CA8C40F81CD4A52F00E457B9 = {
 						CreatedOnToolsVersion = 7.2;
@@ -337,6 +351,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB3443911CD54AB70058B781 /* ImageViewController.m in Sources */,
+				FB34438E1CD549300058B781 /* CameraViewController.m in Sources */,
 				CA8C40EB1CD4A52F00E457B9 /* ViewController.m in Sources */,
 				FB871C1F1CD4A97E00562B6C /* FaceDetectManager.m in Sources */,
 				CA8C40E81CD4A52F00E457B9 /* AppDelegate.m in Sources */,
@@ -482,10 +498,13 @@
 			baseConfigurationReference = FB104FE795B0389A5B1FCAC9 /* Pods-LAHacks2016.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LAHacks2016/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.brandonpon.LAHacks2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -494,10 +513,13 @@
 			baseConfigurationReference = F34B2246672B71731CFA1242 /* Pods-LAHacks2016.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = LAHacks2016/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.brandonpon.LAHacks2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
