@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+@class UIImage;
 
 @interface FaceDetectManager : NSObject
-+ (void)getFaceAttributes;
-+ (void)getSimilarity;
++ (void)getFaceAttributesWithImage:(UIImage *)image;
++ (void)getSimilarityBetweenFace1:(NSString *)faceID1 andFace2:(NSString *)faceID;
 @end

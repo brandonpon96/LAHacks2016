@@ -11,10 +11,12 @@
 #import <MPOFaceSDK.h>
 
 @implementation FaceDetectManager
-+ (void)getFaceAttributes {
++ (void)getFaceAttributesWithImage:(UIImage *)image {
     MPOFaceServiceClient *client = [[MPOFaceServiceClient alloc] initWithSubscriptionKey:@"a3c7751246144ca296f6ba9cb1dd87e0"];
     
-    [client detectWithUrl:@"http://assets.rollingstone.com/assets/images/story/taylor-swift-cancels-thailand-concert-due-to-political-turbulence-20140527/20140527-taylorswift-x624-1401220626.jpg" returnFaceId:YES returnFaceLandmarks:YES returnFaceAttributes:@[@(MPOFaceAttributeTypeAge), @(MPOFaceAttributeTypeFacialHair), @(MPOFaceAttributeTypeHeadPose), @(MPOFaceAttributeTypeSmile), @(MPOFaceAttributeTypeGender)] completionBlock:^(NSArray<MPOFace *> *collection, NSError *error) {
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    
+    [client detectWithData:imageData returnFaceId:YES returnFaceLandmarks:NO returnFaceAttributes:@[@(MPOFaceAttributeTypeAge), @(MPOFaceAttributeTypeFacialHair), @(MPOFaceAttributeTypeHeadPose), @(MPOFaceAttributeTypeSmile), @(MPOFaceAttributeTypeGender)] completionBlock:^(NSArray<MPOFace *> *collection, NSError *error) {
         
         if (error) {
             NSLog(@"Error: %@", error);
@@ -22,17 +24,37 @@
         else {
             NSLog(@"Facial Attributes");
             for (MPOFace *face in collection) {
+                NSLog(@"%@", face.faceId);
                 NSLog(@"%@", face.attributes.gender);
                 NSLog(@"%@", face.attributes.age.stringValue);
+                
+                [self getSimilarityBetweenFace1:face.faceId andFace2:@"36cb342f-f56a-455e-9589-0d8de98d2a67"];
             }
         }
     }];
+    
+//    [client detectWithUrl:@"http://assets.rollingstone.com/assets/images/story/taylor-swift-cancels-thailand-concert-due-to-political-turbulence-20140527/20140527-taylorswift-x624-1401220626.jpg" returnFaceId:YES returnFaceLandmarks:YES returnFaceAttributes:@[@(MPOFaceAttributeTypeAge), @(MPOFaceAttributeTypeFacialHair), @(MPOFaceAttributeTypeHeadPose), @(MPOFaceAttributeTypeSmile), @(MPOFaceAttributeTypeGender)] completionBlock:^(NSArray<MPOFace *> *collection, NSError *error) {
+//        
+//        if (error) {
+//            NSLog(@"Error: %@", error);
+//        }
+//        else {
+//            NSLog(@"Facial Attributes");
+//            for (MPOFace *face in collection) {
+//                NSLog(@"%@", face.faceId);
+//                NSLog(@"%@", face.attributes.gender);
+//                NSLog(@"%@", face.attributes.age.stringValue);
+//                
+//                [self getSimilarityBetweenFace1:face.faceId andFace2:@"36cb342f-f56a-455e-9589-0d8de98d2a67"];
+//            }
+//        }
+//    }];
 }
 
-+ (void)getSimilarity {
++ (void)getSimilarityBetweenFace1:(NSString *)faceID1 andFace2:(NSString *)faceID2 {
     MPOFaceServiceClient *client = [[MPOFaceServiceClient alloc] initWithSubscriptionKey:@"a3c7751246144ca296f6ba9cb1dd87e0"];
 
-    [client verifyWithFirstFaceId:@"694b87f0-9599-4cbc-a4e8-b144c6bd357f" faceId2:@"7f1d8194-4b5a-412e-a5a5-c7dbdf330dd4" completionBlock:^(MPOVerifyResult *verifyResult, NSError *error) {
+    [client verifyWithFirstFaceId:faceID1 faceId2:faceID2 completionBlock:^(MPOVerifyResult *verifyResult, NSError *error) {
         
         if (error) {
             NSLog(@"Error: %@", error);
