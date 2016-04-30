@@ -34,12 +34,29 @@
     
     self.code = [NSString stringWithFormat:@"%@08926590894eb0b868a5853b903e5c831b0fb2965770648b8171f0c6f10d5edb8e640b22",self.ts];
     NSString* hash = [self convertIntoMD5:self.code];
-    NSString* request = [NSString stringWithFormat:@"http://gateway.marvel.com:80/v1/public/characters?name=Iron%%20man&ts=%@&apikey=5770648b8171f0c6f10d5edb8e640b22&hash=%@",self.ts,hash];
+    NSString* request = [NSString stringWithFormat:@"http://gateway.marvel.com:80/v1/public/characters?limit=100&ts=%@&apikey=5770648b8171f0c6f10d5edb8e640b22&hash=%@",self.ts,hash];
     NSLog(@"%@",request);
     NSURL *URL = [NSURL URLWithString:request];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        //NSLog(@"JSON: %@", responseObject);
+        NSDictionary *dictionary = (NSDictionary*) responseObject;
+        NSDictionary *data= dictionary[@"data"];
+        NSArray *results = data[@"results"];
+        NSMutableArray * characters = [[NSMutableArray alloc]init];
+        NSDictionary* dict;
+        for(NSDictionary* dic in results){
+            if(![dic[@"description"] isEqualToString:@""]){
+            dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                  [dic objectForKey:@"name"],@"name",
+                                  [dic objectForKey:@"thumbnail"],@"thumbnail",
+                                  [dic objectForKey:@"description"],@"description", nil];
+            [characters addObject:dict];
+            }
+        }
+
+        NSLog(@"%@",characters);
+       
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
