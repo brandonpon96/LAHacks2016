@@ -16,6 +16,7 @@
 		CA8C40F31CD4A52F00E457B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C40F11CD4A52F00E457B9 /* LaunchScreen.storyboard */; };
 		CA8C40FE1CD4A52F00E457B9 /* LAHacks2016Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8C40FD1CD4A52F00E457B9 /* LAHacks2016Tests.m */; };
 		CA8C41091CD4A52F00E457B9 /* LAHacks2016UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8C41081CD4A52F00E457B9 /* LAHacks2016UITests.m */; };
+		FB871C1F1CD4A97E00562B6C /* FaceDetectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		CA8C410A1CD4A52F00E457B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F34B2246672B71731CFA1242 /* Pods-LAHacks2016.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAHacks2016.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAHacks2016/Pods-LAHacks2016.release.xcconfig"; sourceTree = "<group>"; };
 		FB104FE795B0389A5B1FCAC9 /* Pods-LAHacks2016.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAHacks2016.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAHacks2016/Pods-LAHacks2016.debug.xcconfig"; sourceTree = "<group>"; };
+		FB871C1D1CD4A97E00562B6C /* FaceDetectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetectManager.h; sourceTree = "<group>"; };
+		FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceDetectManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +132,8 @@
 				CA8C40E71CD4A52F00E457B9 /* AppDelegate.m */,
 				CA8C40E91CD4A52F00E457B9 /* ViewController.h */,
 				CA8C40EA1CD4A52F00E457B9 /* ViewController.m */,
+				FB871C1D1CD4A97E00562B6C /* FaceDetectManager.h */,
+				FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */,
 				CA8C40EC1CD4A52F00E457B9 /* Main.storyboard */,
 				CA8C40EF1CD4A52F00E457B9 /* Assets.xcassets */,
 				CA8C40F11CD4A52F00E457B9 /* LaunchScreen.storyboard */,
@@ -333,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA8C40EB1CD4A52F00E457B9 /* ViewController.m in Sources */,
+				FB871C1F1CD4A97E00562B6C /* FaceDetectManager.m in Sources */,
 				CA8C40E81CD4A52F00E457B9 /* AppDelegate.m in Sources */,
 				CA8C40E51CD4A52F00E457B9 /* main.m in Sources */,
 			);

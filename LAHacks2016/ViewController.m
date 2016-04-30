@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "AFHTTPSessionManager.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "FaceDetectManager.h"
 
 @interface ViewController ()
 
@@ -23,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [FaceDetectManager getFaceAttributes];
+    [FaceDetectManager getSimilarity];
     [self findMale];
 }
 
