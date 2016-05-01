@@ -11,6 +11,7 @@
 #import <MPOFaceSDK.h>
 
 @implementation FaceDetectManager
+
 + (void)getFaceAttributesWithImage:(UIImage *)image {
     MPOFaceServiceClient *client = [[MPOFaceServiceClient alloc] initWithSubscriptionKey:@"a3c7751246144ca296f6ba9cb1dd87e0"];
     

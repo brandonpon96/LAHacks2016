@@ -9,7 +9,8 @@
 #import "ResultsViewController.h"
 
 @interface ResultsViewController ()
-@property (strong, nonatomic) IBOutlet UIImageView *userImageView;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *confidenceLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *characterImageView;
 @end
 
@@ -18,9 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.userImageView.image = self.userImage;
-    self.userImageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.characterImageView.image = self.characterImage;
+    self.characterImageView.image = self.characterImage ? self.characterImage : [UIImage imageNamed:@"hero"];
     self.characterImageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 

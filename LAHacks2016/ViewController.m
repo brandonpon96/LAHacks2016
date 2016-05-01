@@ -58,9 +58,11 @@
                      @"imageURL": imgURL
                      };
             [characters addObject:dict];
+            NSLog(@"%@", dict);
+            //[FaceDetectManager getFaceAttributesWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imgURL]]]];
         }
 
-        NSLog(@"%@",dict);
+        //NSLog(@"%@",dict);
        
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
