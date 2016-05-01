@@ -12,8 +12,8 @@
 
 
 +(void) loadCharacters;
-+(NSArray*) getMale;
-+(NSArray*) getFemale;
++(NSDictionary*) getMale;
++(NSDictionary*) getFemale;
 +(NSArray*) getCharacters;
 
 @end
