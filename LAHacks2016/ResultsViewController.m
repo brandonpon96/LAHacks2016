@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.characterImage = [MarvelManager getMale];
+    self.characterImage = [[MarvelManager getMale] valueForKey:@"image"];
     self.characterImageView.image = self.characterImage ? self.characterImage : [UIImage imageNamed:@"hero"];
     self.characterImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.characterImageView.frame = CGRectMake(0, -700, self.view.frame.size.width, self.view.frame.size.height * 0.75);
