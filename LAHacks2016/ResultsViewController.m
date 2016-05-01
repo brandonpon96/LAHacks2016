@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.characterImageView.image = self.characterImage ? self.characterImage : [UIImage imageNamed:@"hero"];
+    self.characterImageView.image = self.characterImage;
     self.characterImageView.contentMode = UIViewContentModeScaleAspectFit;
 
     self.descriptionLabel.alpha = 0;
@@ -32,6 +32,8 @@
     self.descriptionLabel.text = self.charDescription;
     self.nameLabel.text = self.charName;
     self.confidenceLabel.text = self.charConfidence;
+    
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -47,6 +49,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     self.characterImageView.image = nil;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 - (IBAction)goBack:(id)sender {

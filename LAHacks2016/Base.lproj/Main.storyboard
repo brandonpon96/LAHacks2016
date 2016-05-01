@@ -71,24 +71,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spiderman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juj-0H-qMo">
-                                <rect key="frame" x="20" y="393" width="560" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zxs-sD-TfP">
-                                <rect key="frame" x="7" y="20" width="46" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="yMM-te-pMY"/>
-                                </constraints>
-                                <state key="normal" title="Back">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="goBack:" destination="ZuY-as-EdW" eventType="touchUpInside" id="tGB-fe-aw3"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confidenece: 95%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Yh-a2-NCv">
                                 <rect key="frame" x="475" y="433" width="105" height="116"/>
                                 <constraints>
@@ -98,6 +80,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spiderman" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juj-0H-qMo">
+                                <rect key="frame" x="20" y="393" width="560" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zxs-sD-TfP">
+                                <rect key="frame" x="6" y="20" width="32" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="40o-pb-KqN"/>
+                                    <constraint firstAttribute="height" constant="33" id="kqG-qk-a4i"/>
+                                </constraints>
+                                <state key="normal" image="cancel">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="ZuY-as-EdW" eventType="touchUpInside" id="tGB-fe-aw3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -105,19 +106,20 @@
                             <constraint firstItem="VFi-mj-6WF" firstAttribute="baseline" secondItem="6Yh-a2-NCv" secondAttribute="baseline" id="Gr0-RR-BUU"/>
                             <constraint firstItem="6Yh-a2-NCv" firstAttribute="top" secondItem="juj-0H-qMo" secondAttribute="bottom" constant="8" id="H1z-e2-Ccx"/>
                             <constraint firstItem="iCu-n5-xqt" firstAttribute="top" secondItem="VFi-mj-6WF" secondAttribute="bottom" constant="51" id="LcE-iA-0nL"/>
-                            <constraint firstItem="Zxs-sD-TfP" firstAttribute="top" secondItem="DcC-DQ-OWf" secondAttribute="bottom" id="Rjp-5o-kQO"/>
+                            <constraint firstItem="Zxs-sD-TfP" firstAttribute="top" secondItem="DcC-DQ-OWf" secondAttribute="bottom" id="RMi-ia-xhe"/>
                             <constraint firstItem="VFi-mj-6WF" firstAttribute="leading" secondItem="obQ-a4-Ipf" secondAttribute="leadingMargin" id="UZW-cR-Xg0"/>
                             <constraint firstItem="juj-0H-qMo" firstAttribute="trailing" secondItem="6Yh-a2-NCv" secondAttribute="trailing" id="VA9-mq-CPz"/>
-                            <constraint firstItem="Zxs-sD-TfP" firstAttribute="leading" secondItem="obQ-a4-Ipf" secondAttribute="leadingMargin" constant="-13" id="VMk-m1-pz3"/>
                             <constraint firstItem="VFi-mj-6WF" firstAttribute="firstBaseline" secondItem="6Yh-a2-NCv" secondAttribute="firstBaseline" id="ZLF-aG-Uhj"/>
                             <constraint firstItem="6Yh-a2-NCv" firstAttribute="trailing" secondItem="obQ-a4-Ipf" secondAttribute="trailingMargin" id="i4N-Cv-vkp"/>
                             <constraint firstItem="6Yh-a2-NCv" firstAttribute="leading" secondItem="VFi-mj-6WF" secondAttribute="trailing" constant="8" symbolic="YES" id="kxk-CF-j81"/>
+                            <constraint firstItem="Zxs-sD-TfP" firstAttribute="leading" secondItem="juj-0H-qMo" secondAttribute="leading" constant="-14" id="pW0-RF-PvG"/>
                             <constraint firstItem="juj-0H-qMo" firstAttribute="leading" secondItem="VFi-mj-6WF" secondAttribute="leading" id="qVU-6W-6Yb"/>
                             <constraint firstItem="SPl-uf-Elc" firstAttribute="top" secondItem="DcC-DQ-OWf" secondAttribute="bottom" constant="-38" id="qWH-Cd-GYf"/>
                             <constraint firstItem="SPl-uf-Elc" firstAttribute="leading" secondItem="obQ-a4-Ipf" secondAttribute="leading" constant="-29" id="xbE-66-zdj"/>
                             <constraint firstItem="juj-0H-qMo" firstAttribute="top" secondItem="SPl-uf-Elc" secondAttribute="bottom" constant="8" id="zlB-cz-r2I"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="characterImageView" destination="SPl-uf-Elc" id="Svd-ik-KDt"/>
                         <outlet property="confidenceLabel" destination="6Yh-a2-NCv" id="dSz-pf-90q"/>
@@ -178,4 +180,7 @@
             <point key="canvasLocation" x="2019" y="207"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cancel" width="128" height="128"/>
+    </resources>
 </document>

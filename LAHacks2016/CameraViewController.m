@@ -14,24 +14,28 @@
 #import "ResultsViewController.h"
 #import <UIView+DCAnimationKit.h>
 #import "MarvelManager.h"
+#import <MMMaterialDesignSpinner.h>
 
 @interface CameraViewController ()
 @property (strong, nonatomic) UIImage *takenImage;
 @property (strong, nonatomic) UIImage *charImage;
 @property (strong, nonatomic) LLSimpleCamera *camera;
 @property (strong, nonatomic) UIButton *snapButton;
+@property (strong, nonatomic) UIButton *cancelButton;
 @property (strong, nonatomic) UIButton *switchButton;
 @property (strong, nonatomic) UIImage *maleImg;
 @property (strong, nonatomic) UIImage *femaleImg;
 @property (strong, nonatomic) NSString *gender;
 @property (strong, nonatomic) NSDictionary *charAttrF;
 @property (strong, nonatomic) NSDictionary *charAttrM;
+@property (strong, nonatomic) MMMaterialDesignSpinner *spinner;
 @end
 
 @implementation CameraViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
 
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -52,16 +56,23 @@
     self.snapButton.layer.cornerRadius = self.snapButton.frame.size.width / 2.0f;
     self.snapButton.layer.borderColor = [UIColor whiteColor].CGColor;
     self.snapButton.layer.borderWidth = 2.0f;
-    self.snapButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+    self.snapButton.backgroundColor = [UIColor colorWithRed:252/255.0f green:252/255.0f blue:252/255.0f alpha:0.5];
     self.snapButton.layer.rasterizationScale = [UIScreen mainScreen].scale;
     self.snapButton.layer.shouldRasterize = YES;
     [self.snapButton addTarget:self action:@selector(snapButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.snapButton];
+    
+    // cancel button
+    self.cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.cancelButton.frame = CGRectMake(self.view.frame.size.width - 40.0f, 5, 30.0f, 30.0f);
+    [self.cancelButton setImage:[UIImage imageNamed:@"cancel"] forState:UIControlStateNormal];
+    [self.cancelButton addTarget:self action:@selector(cancelButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.cancelButton];
 
     if([LLSimpleCamera isFrontCameraAvailable] && [LLSimpleCamera isRearCameraAvailable]) {
         // button to toggle camera positions
         self.switchButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        self.switchButton.frame = CGRectMake(0, 0, 29.0f + 20.0f, 22.0f + 20.0f);
+        self.switchButton.frame = CGRectMake(5, 5, 29.0f + 20.0f, 22.0f + 20.0f);
         self.switchButton.tintColor = [UIColor whiteColor];
         [self.switchButton setImage:[UIImage imageNamed:@"camera-switch.png"] forState:UIControlStateNormal];
         self.switchButton.imageEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
@@ -86,11 +97,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (MMMaterialDesignSpinner *)spinner {
+    if (!_spinner) {
+        // Initialize the progress view
+        _spinner = [[MMMaterialDesignSpinner alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 75.0f/2, CGRectGetMidY(self.view.frame) - 75.0f/2, 75.0f, 75.0f)];
+        
+        // Set the line width of the spinner
+        _spinner.lineWidth = 7.0f;
+        // Set the tint color of the spinner
+        _spinner.tintColor = [UIColor colorWithRed:153/255.0f green:225/255.0f blue:217/255.0f alpha:0.7];
+        
+        // Add it as a subview
+        [self.view addSubview:_spinner];
+    }
+    return _spinner;
+}
 
 /* camera button methods */
 
 - (void)switchButtonPressed:(UIButton *)button {
     [self.camera togglePosition];
+}
+
+- (void)cancelButtonPressed:(UIButton *)button {
+    [self.camera start];
+    [self.spinner stopAnimating];
+    
 }
 
 - (void)snapButtonPressed:(UIButton *)button {
@@ -110,6 +142,7 @@
                     [self getFemaleImage];
                     dispatch_async(dispatch_get_main_queue(), ^{
                         //[self performSegueWithIdentifier:@"showResults" sender:nil];
+                        [self.spinner startAnimating];
                     });
                 });
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -127,7 +160,7 @@
 - (void)getMaleImage{
     self.charAttrM = [MarvelManager getMale];
     __block NSString *marvelURL = [self.charAttrM valueForKey:@"imageURL"];
-    NSLog(@"male: %@", marvelURL);
+    //NSLog(@"male: %@", marvelURL);
     NSURL *imageURL = [NSURL URLWithString:marvelURL];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -139,7 +172,7 @@
 - (void)getFemaleImage{
     self.charAttrF = [MarvelManager getFemale];
     __block NSString *marvelURL = [self.charAttrF valueForKey:@"imageURL"];
-    NSLog(@"female: %@", marvelURL);
+    //NSLog(@"female: %@", marvelURL);
     NSURL *imageURL = [NSURL URLWithString:marvelURL];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
@@ -217,6 +250,13 @@
 
 }
 
+- (int)randomPercentage {
+    int lowerBound = 50;
+    int upperBound = 95;
+    int rndValue = lowerBound + arc4random() % (upperBound - lowerBound);
+    return rndValue;
+}
+
 
 #pragma mark - Navigation
 
@@ -233,18 +273,18 @@
         ResultsViewController *resultsVC = segue.destinationViewController;
         NSDictionary *attr;
         if ([self.gender isEqualToString:@"male"]) {
-            resultsVC.characterImage = self.maleImg ? self.maleImg : [UIImage imageNamed:@"hero"];
+            resultsVC.characterImage = self.maleImg ? self.maleImg : [UIImage imageNamed:@"default_male"];
             attr = self.charAttrM;
         } else {
-            resultsVC.characterImage = self.femaleImg ? self.femaleImg : [UIImage imageNamed:@"hero"];
+            resultsVC.characterImage = self.femaleImg ? self.femaleImg : [UIImage imageNamed:@"default_female"];
             attr = self.charAttrF;
-//            resultsVC.characterImage = self.maleImg ? self.maleImg : [UIImage imageNamed:@"hero"];
-//            attr = self.charAttrM;
         }
         resultsVC.charName = [attr valueForKey:@"name"];
-        resultsVC.charConfidence = @"Confidence: 95%";
+        resultsVC.charConfidence = [NSString stringWithFormat:@"Confidence: %d%%", [self randomPercentage]];
         resultsVC.charDescription = [attr valueForKey:@"description"];
+        NSLog(@"%@", attr);
     }
+    [self.spinner stopAnimating];
 }
 
 

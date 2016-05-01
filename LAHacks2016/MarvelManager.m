@@ -32,7 +32,7 @@ NSDictionary *dict;
 }
 
 +(NSDictionary*)getMale{
-    NSLog(@"male count %lu",(unsigned long)[males count]);
+    //NSLog(@"male count %lu",(unsigned long)[males count]);
     if(!males)
         return nil;
     int totalCount = (int)[males count];
@@ -41,7 +41,7 @@ NSDictionary *dict;
 }
 
 +(NSDictionary*)getFemale{
-    NSLog(@"female count %lu",(unsigned long)[females count]);
+    //NSLog(@"female count %lu",(unsigned long)[females count]);
     if(!females)
         return nil;
     int totalCount = (int)[females count];
@@ -132,8 +132,8 @@ NSDictionary *dict;
             //NSLog(@"%@",[self getFemale]);
         }
         
-        NSLog(@"%@", males);
-        NSLog(@"%@", females);
+        //NSLog(@"%@", males);
+        //NSLog(@"%@", females);
 
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
