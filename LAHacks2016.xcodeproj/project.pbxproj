@@ -16,6 +16,7 @@
 		CA8C40F31CD4A52F00E457B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C40F11CD4A52F00E457B9 /* LaunchScreen.storyboard */; };
 		CA8C40FE1CD4A52F00E457B9 /* LAHacks2016Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8C40FD1CD4A52F00E457B9 /* LAHacks2016Tests.m */; };
 		CA8C41091CD4A52F00E457B9 /* LAHacks2016UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8C41081CD4A52F00E457B9 /* LAHacks2016UITests.m */; };
+		CA8C411E1CD58F5700E457B9 /* MarvelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8C411D1CD58F5700E457B9 /* MarvelManager.m */; };
 		FB34438E1CD549300058B781 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB34438D1CD549300058B781 /* CameraViewController.m */; };
 		FB3443911CD54AB70058B781 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3443901CD54AB70058B781 /* ImageViewController.m */; };
 		FB3443BB1CD54EEB0058B781 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3443BA1CD54EEB0058B781 /* AVFoundation.framework */; };
@@ -58,6 +59,8 @@
 		CA8C41041CD4A52F00E457B9 /* LAHacks2016UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LAHacks2016UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8C41081CD4A52F00E457B9 /* LAHacks2016UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LAHacks2016UITests.m; sourceTree = "<group>"; };
 		CA8C410A1CD4A52F00E457B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA8C411C1CD58F5600E457B9 /* MarvelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarvelManager.h; sourceTree = "<group>"; };
+		CA8C411D1CD58F5700E457B9 /* MarvelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarvelManager.m; sourceTree = "<group>"; };
 		F34B2246672B71731CFA1242 /* Pods-LAHacks2016.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAHacks2016.release.xcconfig"; path = "Pods/Target Support Files/Pods-LAHacks2016/Pods-LAHacks2016.release.xcconfig"; sourceTree = "<group>"; };
 		FB104FE795B0389A5B1FCAC9 /* Pods-LAHacks2016.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LAHacks2016.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LAHacks2016/Pods-LAHacks2016.debug.xcconfig"; sourceTree = "<group>"; };
 		FB34438C1CD549300058B781 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				CA8C40E71CD4A52F00E457B9 /* AppDelegate.m */,
 				CA8C40E91CD4A52F00E457B9 /* ViewController.h */,
 				CA8C40EA1CD4A52F00E457B9 /* ViewController.m */,
+				CA8C411C1CD58F5600E457B9 /* MarvelManager.h */,
+				CA8C411D1CD58F5700E457B9 /* MarvelManager.m */,
 				FB871C1D1CD4A97E00562B6C /* FaceDetectManager.h */,
 				FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */,
 				FB34438C1CD549300058B781 /* CameraViewController.h */,
@@ -360,6 +365,7 @@
 				FB3443BE1CD5665E0058B781 /* ResultsViewController.m in Sources */,
 				FB34438E1CD549300058B781 /* CameraViewController.m in Sources */,
 				CA8C40EB1CD4A52F00E457B9 /* ViewController.m in Sources */,
+				CA8C411E1CD58F5700E457B9 /* MarvelManager.m in Sources */,
 				FB871C1F1CD4A97E00562B6C /* FaceDetectManager.m in Sources */,
 				CA8C40E81CD4A52F00E457B9 /* AppDelegate.m in Sources */,
 				CA8C40E51CD4A52F00E457B9 /* main.m in Sources */,

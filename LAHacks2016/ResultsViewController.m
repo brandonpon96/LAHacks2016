@@ -8,6 +8,7 @@
 
 #import "ResultsViewController.h"
 #import <UIView+DCAnimationKit.h>
+#import "MarvelManager.h"
 
 @interface ResultsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
@@ -21,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    //self.characterImage = [MarvelManager getMale];
     self.characterImageView.image = self.characterImage ? self.characterImage : [UIImage imageNamed:@"hero"];
     self.characterImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.characterImageView.frame = CGRectMake(0, -700, self.view.frame.size.width, self.view.frame.size.height * 0.75);
