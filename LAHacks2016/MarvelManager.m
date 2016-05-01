@@ -32,10 +32,16 @@ NSDictionary *dict;
 }
 
 +(NSDictionary*)getMale{
+    NSLog(@"male count %d",[males count]);
+    if(!males)
+        return nil;
     return [males objectAtIndex:(arc4random_uniform([males count]))];
 }
 
 +(NSDictionary*)getFemale{
+    NSLog(@"female count %d",[females count]);
+    if(!females)
+        return nil;
     return [females objectAtIndex:(arc4random_uniform([females count]))];
 }
 
@@ -44,7 +50,7 @@ NSDictionary *dict;
 }
 
 +(void)loadCharacters{
-    allchars =[[NSMutableArray alloc]init];
+    
     males = [[NSMutableArray alloc] init];
     females = [[NSMutableArray alloc] init];
     for(int i = 0; i < 15; i++){
@@ -76,12 +82,12 @@ NSDictionary *dict;
 
 +(void)requestCharacters:(int)offset{
     ts = [self timeStamp];
-    
+    allchars =[[NSMutableArray alloc]init];
     
     code = [NSString stringWithFormat:@"%@08926590894eb0b868a5853b903e5c831b0fb2965770648b8171f0c6f10d5edb8e640b22",ts];
     NSString* hash = [self convertIntoMD5:code];
     NSString* request = [NSString stringWithFormat:@"http://gateway.marvel.com:80/v1/public/characters?limit=100&offset=%d&ts=%@&apikey=5770648b8171f0c6f10d5edb8e640b22&hash=%@",offset,ts,hash];
-    NSLog(@"%@",request);
+    //NSLog(@"%@",request);
     NSURL *URL = [NSURL URLWithString:request];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:URL.absoluteString parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -106,8 +112,10 @@ NSDictionary *dict;
             // NSLog(@"%@",dict);
         }
         //NSLog(@"%@",allchars);
-        if(offset == 14){
-            [self maleFemale];
+        [self maleFemale];
+        if(offset == 1400){
+            NSLog(@"%@",[self getMale]);
+            NSLog(@"%@",[self getFemale]);
         }
         
         
