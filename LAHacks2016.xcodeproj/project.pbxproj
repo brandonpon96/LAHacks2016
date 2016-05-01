@@ -19,6 +19,7 @@
 		FB34438E1CD549300058B781 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB34438D1CD549300058B781 /* CameraViewController.m */; };
 		FB3443911CD54AB70058B781 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3443901CD54AB70058B781 /* ImageViewController.m */; };
 		FB3443BB1CD54EEB0058B781 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB3443BA1CD54EEB0058B781 /* AVFoundation.framework */; };
+		FB3443BE1CD5665E0058B781 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB3443BD1CD5665E0058B781 /* ResultsViewController.m */; };
 		FB871C1F1CD4A97E00562B6C /* FaceDetectManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		FB34438F1CD54AB70058B781 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		FB3443901CD54AB70058B781 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		FB3443BA1CD54EEB0058B781 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FB3443BC1CD5665E0058B781 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewController.h; sourceTree = "<group>"; };
+		FB3443BD1CD5665E0058B781 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		FB871C1D1CD4A97E00562B6C /* FaceDetectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceDetectManager.h; sourceTree = "<group>"; };
 		FB871C1E1CD4A97E00562B6C /* FaceDetectManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceDetectManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +151,8 @@
 				FB34438D1CD549300058B781 /* CameraViewController.m */,
 				FB34438F1CD54AB70058B781 /* ImageViewController.h */,
 				FB3443901CD54AB70058B781 /* ImageViewController.m */,
+				FB3443BC1CD5665E0058B781 /* ResultsViewController.h */,
+				FB3443BD1CD5665E0058B781 /* ResultsViewController.m */,
 				CA8C40EC1CD4A52F00E457B9 /* Main.storyboard */,
 				CA8C40EF1CD4A52F00E457B9 /* Assets.xcassets */,
 				CA8C40F11CD4A52F00E457B9 /* LaunchScreen.storyboard */,
@@ -352,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB3443911CD54AB70058B781 /* ImageViewController.m in Sources */,
+				FB3443BE1CD5665E0058B781 /* ResultsViewController.m in Sources */,
 				FB34438E1CD549300058B781 /* CameraViewController.m in Sources */,
 				CA8C40EB1CD4A52F00E457B9 /* ViewController.m in Sources */,
 				FB871C1F1CD4A97E00562B6C /* FaceDetectManager.m in Sources */,

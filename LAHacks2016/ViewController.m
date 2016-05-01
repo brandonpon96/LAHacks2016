@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [FaceDetectManager getFaceAttributesWithImage:[UIImage imageNamed:@"taylor"]];
+    //[FaceDetectManager getFaceAttributesWithImage:[UIImage imageNamed:@"taylor"]];
     [self findMale];
 }
 
@@ -46,16 +46,21 @@
         NSMutableArray * characters = [[NSMutableArray alloc]init];
         NSDictionary* dict;
         for(NSDictionary* dic in results){
-            if(![dic[@"description"] isEqualToString:@""]){
-            dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                  [dic objectForKey:@"name"],@"name",
-                                  [dic objectForKey:@"thumbnail"],@"thumbnail",
-                                  [dic objectForKey:@"description"],@"description", nil];
+            if([dic[@"description"] isEqualToString:@""] || [[dic valueForKeyPath:@"thumbnail.path"] containsString:@"image_not_available"])
+                continue;
+            
+            NSMutableString *imgURLPath = [dic valueForKeyPath:@"thumbnail.path"];
+            NSString *urlExtension = [dic valueForKeyPath:@"thumbnail.extension"];
+            NSString *imgURL = [NSString stringWithFormat:@"%@.%@", imgURLPath, urlExtension];
+            dict = @{
+                     @"name":[dic objectForKey:@"name"],
+                     @"description":[dic objectForKey:@"description"],
+                     @"imageURL": imgURL
+                     };
             [characters addObject:dict];
-            }
         }
 
-        NSLog(@"%@",characters);
+        NSLog(@"%@",dict);
        
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);

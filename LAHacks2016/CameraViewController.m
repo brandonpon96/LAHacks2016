@@ -10,6 +10,7 @@
 #import "ImageViewController.h"
 #import <LLSimpleCamera.h>
 #import "FaceDetectManager.h"
+#import "ResultsViewController.h"
 
 @interface CameraViewController ()
 @property (strong, nonatomic) UIImage *takenImage;
@@ -49,6 +50,10 @@
 
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -77,7 +82,7 @@
             [FaceDetectManager getFaceAttributesWithImage:image];
             
             self.takenImage = image;
-            [self performSegueWithIdentifier:@"showImage" sender:image];
+            [self performSegueWithIdentifier:@"showResults" sender:nil];
         }
         else {
             NSLog(@"An error has occured: %@", error);
@@ -95,6 +100,10 @@
     if ([segue.identifier isEqualToString:@"showImage"]) {
         ImageViewController *imgVC = segue.destinationViewController;
         imgVC.image = self.takenImage;
+    } else if ([segue.identifier isEqualToString:@"showResults"]) {
+        ResultsViewController *resultsVC = segue.destinationViewController;
+        resultsVC.userImage = self.takenImage;
+        resultsVC.characterImage = [UIImage imageNamed:@"hero"];
     }
 }
 
