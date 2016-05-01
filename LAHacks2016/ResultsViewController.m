@@ -22,14 +22,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.characterImage = [[MarvelManager getMale] valueForKey:@"image"];
     self.characterImageView.image = self.characterImage ? self.characterImage : [UIImage imageNamed:@"hero"];
     self.characterImageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.characterImageView.frame = CGRectMake(0, -700, self.view.frame.size.width, self.view.frame.size.height * 0.75);
 
     self.descriptionLabel.alpha = 0;
     self.confidenceLabel.alpha = 0;
     self.nameLabel.alpha = 0;
+    
+    self.descriptionLabel.text = self.charDescription;
+    self.nameLabel.text = self.charName;
+    self.confidenceLabel.text = self.charConfidence;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

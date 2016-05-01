@@ -11,7 +11,7 @@
 #import "AFHTTPSessionManager.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "FaceDetectManager.h"
-
+#include <stdlib.h>
 
 @implementation MarvelManager
 
@@ -32,17 +32,21 @@ NSDictionary *dict;
 }
 
 +(NSDictionary*)getMale{
-    NSLog(@"male count %d",[males count]);
+    NSLog(@"male count %lu",(unsigned long)[males count]);
     if(!males)
         return nil;
-    return [males objectAtIndex:(arc4random_uniform([males count]))];
+    int totalCount = (int)[males count];
+    NSUInteger index = (NSUInteger)arc4random_uniform(totalCount);
+    return [males objectAtIndex:index];
 }
 
 +(NSDictionary*)getFemale{
-    NSLog(@"female count %d",[females count]);
+    NSLog(@"female count %lu",(unsigned long)[females count]);
     if(!females)
         return nil;
-    return [females objectAtIndex:(arc4random_uniform([females count]))];
+    int totalCount = (int)[females count];
+    NSUInteger index = (NSUInteger)arc4random_uniform(totalCount);
+    return [females objectAtIndex:index];
 }
 
 +(NSArray*) getCharacters{
@@ -96,29 +100,41 @@ NSDictionary *dict;
         NSDictionary *data= dictionary[@"data"];
         NSArray *results = data[@"results"];
         NSDictionary* dict;
+        NSMutableSet *descriptions = [NSMutableSet set];
+
         for(NSDictionary* dic in results){
-            if([dic[@"description"] isEqualToString:@""] || [[dic valueForKeyPath:@"thumbnail.path"] containsString:@"image_not_available"])
+            NSString *desc = dic[@"description"];
+            if(![desc containsString:@"."] || [desc containsString:@"Everett"] || [[dic valueForKeyPath:@"thumbnail.path"] containsString:@"image_not_available"])
                 continue;
             
             NSMutableString *imgURLPath = [dic valueForKeyPath:@"thumbnail.path"];
             NSString *urlExtension = [dic valueForKeyPath:@"thumbnail.extension"];
             NSString *imgURL = [NSString stringWithFormat:@"%@.%@", imgURLPath, urlExtension];
+            NSString *name = [dic valueForKey:@"name"];
+            NSLog(@"%@", name);
             dict = @{
-                     @"name":[dic objectForKey:@"name"],
-                     @"description":[dic objectForKey:@"description"],
+                     @"name": name,
+                     @"description":[dic valueForKey:@"description"],
                      @"imageURL": imgURL
                      };
+            
+            if ([descriptions containsObject:name]) {
+                continue;
+            }
             [allchars addObject:dict];
-            // NSLog(@"%@",dict);
+            [descriptions addObject:name];
+            
         }
         //NSLog(@"%@",allchars);
         [self maleFemale];
         if(offset == 1400){
-            NSLog(@"%@",[self getMale]);
-            NSLog(@"%@",[self getFemale]);
+            //NSLog(@"%@",[self getMale]);
+            //NSLog(@"%@",[self getFemale]);
         }
         
-        
+        NSLog(@"%@", males);
+        NSLog(@"%@", females);
+
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];

@@ -10,4 +10,7 @@
 
 @interface ResultsViewController : UIViewController
 @property (strong, nonatomic) UIImage *characterImage;
+@property (strong, nonatomic) NSString *charName;
+@property (strong, nonatomic) NSString *charDescription;
+@property (strong, nonatomic) NSString *charConfidence;
 @end
