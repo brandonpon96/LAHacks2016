@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ResultsViewController : UIViewController
-@property (strong, nonatomic) UIImage *userImage;
 @property (strong, nonatomic) UIImage *characterImage;
 @end

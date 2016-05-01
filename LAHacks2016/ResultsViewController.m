@@ -7,10 +7,12 @@
 //
 
 #import "ResultsViewController.h"
+#import <UIView+DCAnimationKit.h>
 
 @interface ResultsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *confidenceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *characterImageView;
 @end
 
@@ -19,8 +21,33 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.characterImageView.image = self.characterImage ? self.characterImage : [UIImage imageNamed:@"hero"];
     self.characterImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.characterImageView.frame = CGRectMake(0, -700, self.view.frame.size.width, self.view.frame.size.height * 0.75);
+
+    self.descriptionLabel.alpha = 0;
+    self.confidenceLabel.alpha = 0;
+    self.nameLabel.alpha = 0;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.characterImageView tada:NULL];
+    [self.descriptionLabel bounceIntoView:self.view direction:DCAnimationDirectionLeft];
+    [self.confidenceLabel bounceIntoView:self.view direction:DCAnimationDirectionRight];
+    [UIView animateWithDuration:0.5 animations:^{
+        self.descriptionLabel.alpha = 1;
+        self.confidenceLabel.alpha = 1;
+        self.nameLabel.alpha = 1;
+    }];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    self.characterImageView.image = nil;
+}
+
+- (IBAction)goBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (void)didReceiveMemoryWarning {

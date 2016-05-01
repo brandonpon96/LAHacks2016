@@ -14,7 +14,6 @@
 
 + (void)getFaceAttributesWithImage:(UIImage *)image {
     MPOFaceServiceClient *client = [[MPOFaceServiceClient alloc] initWithSubscriptionKey:@"a3c7751246144ca296f6ba9cb1dd87e0"];
-    
     NSData *imageData = UIImageJPEGRepresentation(image, 1);
     
     [client detectWithData:imageData returnFaceId:YES returnFaceLandmarks:NO returnFaceAttributes:@[@(MPOFaceAttributeTypeAge), @(MPOFaceAttributeTypeFacialHair), @(MPOFaceAttributeTypeHeadPose), @(MPOFaceAttributeTypeSmile), @(MPOFaceAttributeTypeGender)] completionBlock:^(NSArray<MPOFace *> *collection, NSError *error) {

@@ -11,6 +11,7 @@
 #import <LLSimpleCamera.h>
 #import "FaceDetectManager.h"
 #import "ResultsViewController.h"
+#import <UIView+DCAnimationKit.h>
 
 @interface CameraViewController ()
 @property (strong, nonatomic) UIImage *takenImage;
@@ -78,11 +79,14 @@
             // I put the delay, because in iOS9 the shutter sound gets interrupted if we call it directly.
             [camera performSelector:@selector(stop) withObject:nil afterDelay:0.2];
             
-            // Face detection processing
-            [FaceDetectManager getFaceAttributesWithImage:image];
-            
-            self.takenImage = image;
-            [self performSegueWithIdentifier:@"showResults" sender:nil];
+            [button expandIntoView:self.view finished:^{
+                // Face detection processing                
+                //[FaceDetectManager getFaceAttributesWithImage:image];
+                
+                self.takenImage = image;
+                [self performSegueWithIdentifier:@"showResults" sender:nil];
+                
+            }];
         }
         else {
             NSLog(@"An error has occured: %@", error);
@@ -102,7 +106,6 @@
         imgVC.image = self.takenImage;
     } else if ([segue.identifier isEqualToString:@"showResults"]) {
         ResultsViewController *resultsVC = segue.destinationViewController;
-        resultsVC.userImage = self.takenImage;
         resultsVC.characterImage = [UIImage imageNamed:@"hero"];
     }
 }
