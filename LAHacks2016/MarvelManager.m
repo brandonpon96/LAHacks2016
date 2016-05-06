@@ -75,7 +75,7 @@ NSDictionary *dict;
 
 +(BOOL)isMale:(NSString*)descript{
     if([descript containsString:@"his"] ||
-       [descript containsString:@"he"]  ||
+       ([descript containsString:@"he"] && ![descript containsString:@"she"]) ||
        [descript containsString:@"him"] ||
        [descript containsString:@"man"]){
         return YES;
@@ -112,6 +112,9 @@ NSDictionary *dict;
             NSString *imgURL = [NSString stringWithFormat:@"%@.%@", imgURLPath, urlExtension];
             NSString *name = [dic valueForKey:@"name"];
             NSLog(@"%@", name);
+            if ([name isEqualToString:@"Toxin"]) {
+                continue;
+            }
             dict = @{
                      @"name": name,
                      @"description":[dic valueForKey:@"description"],
