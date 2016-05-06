@@ -42,6 +42,8 @@ NSDictionary *dict;
 
 +(NSDictionary*)getFemale{
     //NSLog(@"female count %lu",(unsigned long)[females count]);
+    NSLog(@"female count %d",[females count]);
+    NSLog(@"%@",females);
     if(!females)
         return nil;
     int totalCount = (int)[females count];
